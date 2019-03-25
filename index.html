@@ -15,6 +15,30 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // Фикмированная шапка при скролле
+      $("#header").removeClass("default");
+      $(window).scroll(function(){
+        if ($(this).scrollTop() > 20) {
+          $("#header").addClass("default").fadeIn('fast');
+        } else {
+          $("#header").removeClass("default").fadeIn('fast');
+        };
+      });
+
+      // Плавный скролл по якорям
+      $('a[href^="#"]').bind("click", function(e){
+  var anchor = $(this);
+  $('html, body').stop().animate({
+   scrollTop: $(anchor.attr("href")).offset().top
+  }, 1000);
+  e.preventDefault();
+ 
+       });
+    });
+  </script>
 </head>
 
 <body>
@@ -35,7 +59,7 @@
               <a href="#best-features" class="nav-link waves-effect waves-light">Blog</a>
             </li>
             <li class="nav-item">
-              <a href="#example" class="nav-link waves-effect waves-light">Contact</a>
+              <a href="#examples" class="nav-link waves-effect waves-light">Examples</a>
             </li>
             <li class="nav-item">
               <a href="#gallery" class="nav-link waves-effect waves-light">News</a>
@@ -74,7 +98,7 @@
             </h2>
             <hr class="hr-light">
             <h4 class="white-text  my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, libero?</h4>
-            <button class="btn btn-outline-white waves-effect waves-light">Read more <i class="fa fa-book"></i></button>
+            <a href="#best-features"><button class="btn btn-outline-white waves-effect waves-light">Read more <i class="fa fa-book"></i></button></a>
           </div>
         </div>
       </div>
